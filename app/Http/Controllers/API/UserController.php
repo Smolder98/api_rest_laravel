@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\GuardarUsuarioRequest;
 use App\Models\Users;
 use Illuminate\Http\Request;
 
@@ -25,10 +26,15 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GuardarUsuarioRequest $request)
     {
         //guardar datos del usuario
-        
+        Users::create($request -> all());
+
+        return response()->json([
+            'res' => true,
+            'msg' => 'Usuario registrado'
+        ]);
     }
 
     /**

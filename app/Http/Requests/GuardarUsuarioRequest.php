@@ -23,8 +23,8 @@ class GuardarUsuarioRequest extends FormRequest
      */
     public function rules()
     {
+         //validaciones de la request, con | se agreman mas validaciones
         return [
-            //validaciones de la request, con | se agreman mas validaciones
             "idFirebase" => "required",
             "name" => "required",
             "lastname" => "required",
