@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        //recuperar todos los registros
         return Users::all();
     }
 
@@ -27,7 +27,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //guardar datos del usuario
+        
     }
 
     /**

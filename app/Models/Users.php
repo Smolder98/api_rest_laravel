@@ -22,4 +22,10 @@ class Users extends Model{
             "email",
             "password"
     ];
+
+
+    protected $hidden = [
+        'created_at',
+        'updated_at'
+    ];
 }
