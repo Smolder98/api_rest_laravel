@@ -107,4 +107,28 @@ class UserController extends Controller
 
         return new UserResourse($user);
     }
+
+
+    public function userGroups($id)
+    {
+        $user = users::with("groups")->where('id', $id)->first();
+
+         return response()->json([
+            'res' => true,
+                'data' => $user
+            ], 200);
+    }
+
+    public function userGroupsCreates($id)
+    {
+        $user = users::with("groupsCreates")->where('id', $id)->first();
+
+         return response()->json([
+            'res' => true,
+                'data' => $user
+            ], 200);
+    }
+
+
+
 }

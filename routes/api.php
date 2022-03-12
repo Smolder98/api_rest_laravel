@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\GroupController;
 use App\Http\Controllers\API\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,7 +25,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // Route::get('users/{user}', [UserController::class, 'show']);
 
-// Route::post('users', [UserController::class, 'store']);
+Route::get('usersGroupCreates/{id}', [UserController::class, 'userGroupsCreates']);
+
+Route::get('usersGroup/{id}', [UserController::class, 'groupsUsers']);
 
 // Route::put('users/{user}', [UserController::class, 'update']);
 
@@ -32,3 +35,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::apiResource('users', UserController::class);
+
+Route::apiResource('groups', GroupController::class);

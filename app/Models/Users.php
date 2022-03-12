@@ -28,4 +28,18 @@ class Users extends Model{
         'created_at',
         'updated_at'
     ];
+
+
+     //Relacion uno a muchos
+    public function groupsCreates(){
+        return $this->hasMany(Group::class, 'user_id_created');
+    }
+
+
+    //Relacion de muchos a muchos
+    public function groups(){
+        return $this->belongsToMany(Group::class, "user_group", "user_id");
+    }
+
+
 }
