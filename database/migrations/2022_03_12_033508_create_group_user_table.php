@@ -19,6 +19,8 @@ class CreateGroupUserTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('group_id');
 
+            //Agregar lo de la invitacion
+
             $table->foreign("user_id")->references('id')->on('users')->onDelete("cascade");
             $table->foreign("group_id")->references('id')->on('groups')->onDelete("cascade");
         });
