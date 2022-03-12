@@ -20,6 +20,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get('users', [UserController::class, 'index']);
+// Route::get('users', [UserController::class, 'index']);
 
-Route::post('users', [UserController::class, 'store']);
+// Route::get('users/{user}', [UserController::class, 'show']);
+
+// Route::post('users', [UserController::class, 'store']);
+
+// Route::put('users/{user}', [UserController::class, 'update']);
+
+// Route::delete('users/{user}', [UserController::class, 'destroy']);
+
+
+Route::apiResource('users', UserController::class);

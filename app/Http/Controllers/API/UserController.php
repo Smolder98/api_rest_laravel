@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ActualizarUsuarioRequest;
 use App\Http\Requests\GuardarUsuarioRequest;
+use App\Http\Resources\UserResourse;
 use App\Models\Users;
 use Illuminate\Http\Request;
 
@@ -17,7 +19,7 @@ class UserController extends Controller
     public function index()
     {
         //recuperar todos los registros
-        return Users::all();
+        return  UserResourse::collection(Users::all());
     }
 
     /**
@@ -29,12 +31,16 @@ class UserController extends Controller
     public function store(GuardarUsuarioRequest $request)
     {
         //guardar datos del usuario
-        Users::create($request -> all());
 
-        return response()->json([
-            'res' => true,
-            'msg' => 'Usuario registrado'
-        ]);
+        // return response()->json([
+        //     'res' => true,
+        //     'msg' => 'Usuario registrado'
+        // ], 200);
+
+        //forma para enviar mas atributos
+        // return (new UserResourse(Users::create($request -> all()))) -> additional(['msg' => "Mensaja"]);
+
+        return new UserResourse(Users::create($request -> all()));
     }
 
     /**
@@ -43,9 +49,22 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Users $user)
     {
-        //
+        //Metodo para retornar un usuario
+        // return response()->json([
+        //     'res' => true,
+        //     'user' => $user
+        // ], 200);
+
+        //Para nosotros manejar la respuesta
+        // return (new UserResourse($user))
+        //                 -> response()
+        //                 ->setStatusCode(200);
+
+
+
+        return new UserResourse($user);
     }
 
     /**
@@ -55,9 +74,18 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ActualizarUsuarioRequest $request, Users $user)
     {
-        //
+        //Metodo para actualizar usuario
+
+            $user->update($request -> all());
+
+            // return response()->json([
+            // 'res' => true,
+            //     'msg' => "Usuario actualizado"
+            // ], 200);
+
+            return new UserResourse($user);
     }
 
     /**
@@ -66,8 +94,17 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Users $user)
     {
-        //
+        //Metodo para eliminar usuario
+
+        $user -> delete();
+
+        // return response()->json([
+        //     'res' => true,
+        //         'msg' => "Usuario eliminado"
+        //     ], 200);
+
+        return new UserResourse($user);
     }
 }

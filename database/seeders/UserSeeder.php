@@ -16,15 +16,15 @@ class UserSeeder extends Seeder
 
         DB::table("users")->insert([
             [
-            "idFirebase"  => "",
+            "idFirebase"  => "4645465645656",
             "name" =>"Abdiel",
             "lastname" =>"Licona",
             "numberAccount" =>"201910020280",
             "phone" =>"99693345",
-            "status" =>"",
-            "image" =>"",
-            "address" =>"",
-            "birthDate" =>"",
+            "status" =>"fdfdfdfd",
+            "image" =>"fdfdfdf",
+            "address" =>"dfdfdf",
+            "birthDate" =>"dfdfdfdfdfdf",
             "carrera" =>"Computacion",
             "email" =>"correo@correo.com",
             "password" =>"123"
