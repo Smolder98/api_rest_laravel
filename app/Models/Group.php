@@ -31,7 +31,7 @@ class Group extends Model
 
        //Relacion de muchos a muchos
     public function users(){
-        return $this->belongsToMany(Users::class, "user_group");
+        return $this->belongsToMany(Users::class, "user_groups", "group_id", "user_id")->withPivot("status");
     }
 
 }

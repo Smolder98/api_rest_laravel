@@ -24,18 +24,18 @@ class ActualizarUsuarioRequest extends FormRequest
     public function rules()
     {
        return [
-            "idFirebase" => "required",
-            "name" => "required",
-            "lastname" => "required",
-            "numberAccount" => "required",
-            "phone" => "required",
-            "status" => "required",
-            "image" => "required",
-            "address" => "required",
-            "birthDate" => "required",
-            "carrera" => "required",
-            "email" => "required|unique:users,email," . $this->route('user')->id,
-            "password" => "required"
+            // "idFirebase" => "required",
+            // "name" => "required",
+            // "lastname" => "required",
+            // "numberAccount" => "required",
+            // "phone" => "required",
+            // "status" => "required",
+            // "image" => "required",
+            // "address" => "required",
+            // "birthDate" => "required",
+            // "carrera" => "required",
+            "email" => "unique:users,email," . $this->route('user')->id,
+            // "password" => "required"
         ];
     }
 }

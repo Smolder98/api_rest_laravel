@@ -75,4 +75,17 @@ class GroupController extends Controller
 
         return new GroupResourse($group);
     }
+
+     public function groupsUsers($id)
+    {
+        $group = group::with("users")
+                    ->where([
+                            'id' => $id
+                        ])->first();
+
+         return response()->json([
+            'res' => true,
+                'data' => $group
+            ], 200);
+    }
 }
