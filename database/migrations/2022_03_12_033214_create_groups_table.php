@@ -23,8 +23,7 @@ class CreateGroupsTable extends Migration
             $table->unsignedBigInteger("user_id_created");
             $table->timestamps();
 
-            $table->foreign("user_id_created")->references('id')->on('users')->cascadeOnDelete('set null');
-
+            $table->foreign("user_id_created")->references('id')->on('users')->onDelete("cascade");
 
         });
     }

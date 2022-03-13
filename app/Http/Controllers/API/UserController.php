@@ -111,7 +111,20 @@ class UserController extends Controller
 
     public function userGroups($id)
     {
-        $user = users::with("groups")->where('id', $id)->first();
+        $user = users::with("groups")
+                        ->where('id', $id)
+                        ->first();
+
+         return response()->json([
+            'res' => true,
+                'data' => $user
+            ], 200);
+
+    }
+
+    public function userGroupsCreates($id)
+    {
+        $user = users::with("groupsCreates")->where('id', $id)->first();
 
          return response()->json([
             'res' => true,
@@ -119,9 +132,13 @@ class UserController extends Controller
             ], 200);
     }
 
-    public function userGroupsCreates($id)
+
+
+      public function findUserForCorreo($correo)
     {
-        $user = users::with("groupsCreates")->where('id', $id)->first();
+            $user = Users::where([
+                "email" => $correo
+            ])->get();
 
          return response()->json([
             'res' => true,

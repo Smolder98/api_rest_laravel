@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class GuardarUsuarioRequest extends FormRequest
+class GuardarUsuarioGrupoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,9 +23,8 @@ class GuardarUsuarioRequest extends FormRequest
      */
     public function rules()
     {
-         //validaciones de la request, con | se agreman mas validaciones
         return [
-            "user_id" => "required",
+              "user_id" => "required",
             "group_id" => "required",
             "status" => "required"
         ];
