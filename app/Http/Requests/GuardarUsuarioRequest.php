@@ -31,7 +31,7 @@ class GuardarUsuarioRequest extends FormRequest
             "numberAccount" => "required",
             "phone" => "required",
             "status" => "required",
-            "image" => "required",
+            // "image" => "required",
             "address" => "required",
             "birthDate" => "required",
             "carrera" => "required",

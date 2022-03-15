@@ -27,7 +27,7 @@ class GuardarGrupoRequest extends FormRequest
             "idFirebase" => "required",
             "title" => "required",
             "description" => "required",
-            "image" => "required",
+            // "image" => "required",
             "status" => "required",
             "user_id_created" => "required"
         ];
