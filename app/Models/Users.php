@@ -16,6 +16,7 @@ class Users extends Model{
             "phone",
             "status",
             "image",
+            "imageCover",
             "address",
             "birthDate",
             "carrera",

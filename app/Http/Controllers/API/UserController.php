@@ -122,6 +122,8 @@ class UserController extends Controller
 
     }
 
+
+
     public function userGroupsCreates($id)
     {
         $user = users::with("groupsCreates")->where('id', $id)->first();
