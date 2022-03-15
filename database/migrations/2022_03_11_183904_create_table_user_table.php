@@ -22,6 +22,7 @@ class CreateTableUserTable extends Migration
             $table->string("phone");
             $table->string("status");
             $table->binary("image");
+            $table->binary("imageCover");
             $table->string("address");
             $table->string("birthDate");
             $table->string("carrera");
