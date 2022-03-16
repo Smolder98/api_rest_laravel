@@ -221,6 +221,35 @@ class UserGroupController extends Controller
 
     }
 
+    public function groupsForUserActives($idUser)
+    {
+
+
+             $user = DB::table("groups")
+                            ->select([
+                                "groups.id",
+                                "groups.title",
+                                "groups.description",
+                                "groups.image",
+                                "groups.status as group_status",
+                                "groups.user_id_created",
+                                "groups.image",
+                                "user_groups.status as status_user_group"
+                            ])
+                            ->join('user_groups', 'groups.id', '=', 'user_groups.group_id')
+                            ->where([
+                                "user_groups.user_id" => $idUser,
+                                "user_groups.status" => "1"
+                            ])
+                            ->get();
+
+                 return response()->json([
+                                        'res' => true,
+                                        'data' => $user
+                                    ], 200);
+
+    }
+
 
     public function temp(GuardarUsuarioGrupoRequest $request)
     {
