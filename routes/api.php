@@ -66,6 +66,8 @@ Route::get('usuariosDelGrupoActivos/{idGrupo}', [UserGroupController::class, 'us
 
 Route::get('invitacionesPorUsuario/{idUser}', [UserGroupController::class, 'userGroupsInvitated']);
 
+Route::get('gruposDelUsuario/{idUser}', [UserGroupController::class, 'groupsForUserActives']);
+
 Route::post('updateUserGroup', [UserGroupController::class, 'actualizarGrupoUsuario']);
 
 Route::post('getStatusUserGroup', [UserGroupController::class, 'getStatusUserGroup']);
