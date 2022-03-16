@@ -47,7 +47,7 @@ class UserGroupController extends Controller
                 if($user->count() > 0){
 
                     return response()->json([
-                        'res' => false,
+                        'data' => "[]",
                             'msg' => "Error: Registro ya existe"
                         ], 400);
                 }
@@ -155,11 +155,12 @@ class UserGroupController extends Controller
                             ->get();
 
                 return response()->json([
-                        'data' => $user
-                ]) ;
-
+                                        'res' => true,
+                                        'data' => $user
+                                    ], 200);
 
     }
+
 
     public function userGroupsActives($idGrupo)
     {
@@ -184,13 +185,16 @@ class UserGroupController extends Controller
                             ->get();
 
                 return response()->json([
-                        'data' => $user
-                ]) ;
+                                        'res' => true,
+                                        'data' => $user
+                                    ], 200);
+
 
     }
 
     public function userGroupsInvitated($idUser)
     {
+
 
              $user = DB::table("groups")
                             ->select([
@@ -210,9 +214,39 @@ class UserGroupController extends Controller
                             ])
                             ->get();
 
-                return response()->json([
-                        'data' => $user
-                ]) ;
+                 return response()->json([
+                                        'res' => true,
+                                        'data' => $user
+                                    ], 200);
+
+    }
+
+    public function groupsForUserActives($idUser)
+    {
+
+
+             $user = DB::table("groups")
+                            ->select([
+                                "groups.id",
+                                "groups.title",
+                                "groups.description",
+                                "groups.image",
+                                "groups.status as group_status",
+                                "groups.user_id_created",
+                                "groups.image",
+                                "user_groups.status as status_user_group"
+                            ])
+                            ->join('user_groups', 'groups.id', '=', 'user_groups.group_id')
+                            ->where([
+                                "user_groups.user_id" => $idUser,
+                                "user_groups.status" => "1"
+                            ])
+                            ->get();
+
+                 return response()->json([
+                                        'res' => true,
+                                        'data' => $user
+                                    ], 200);
 
     }
 
