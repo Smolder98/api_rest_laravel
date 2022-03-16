@@ -47,7 +47,7 @@ class UserGroupController extends Controller
                 if($user->count() > 0){
 
                     return response()->json([
-                        'res' => false,
+                        'data' => "[]",
                             'msg' => "Error: Registro ya existe"
                         ], 400);
                 }
@@ -155,11 +155,12 @@ class UserGroupController extends Controller
                             ->get();
 
                 return response()->json([
-                        'data' => $user
-                ]) ;
-
+                                        'res' => true,
+                                        'data' => $user
+                                    ], 200);
 
     }
+
 
     public function userGroupsActives($idGrupo)
     {
@@ -184,13 +185,16 @@ class UserGroupController extends Controller
                             ->get();
 
                 return response()->json([
-                        'data' => $user
-                ]) ;
+                                        'res' => true,
+                                        'data' => $user
+                                    ], 200);
+
 
     }
 
     public function userGroupsInvitated($idUser)
     {
+
 
              $user = DB::table("groups")
                             ->select([
@@ -210,9 +214,10 @@ class UserGroupController extends Controller
                             ])
                             ->get();
 
-                return response()->json([
-                        'data' => $user
-                ]) ;
+                 return response()->json([
+                                        'res' => true,
+                                        'data' => $user
+                                    ], 200);
 
     }
 
