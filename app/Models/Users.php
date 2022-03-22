@@ -36,6 +36,10 @@ class Users extends Model{
         return $this->hasMany(Group::class, 'user_id_created');
     }
 
+    public function notasCreates(){
+             return $this->hasMany(Nota::class, 'user_id');
+    }
+
 
     //Relacion de muchos a muchos
     public function groups(){

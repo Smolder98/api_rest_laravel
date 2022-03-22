@@ -122,11 +122,19 @@ class UserController extends Controller
 
     }
 
-
-
     public function userGroupsCreates($id)
     {
         $user = users::with("groupsCreates")->where('id', $id)->first();
+
+         return response()->json([
+            'res' => true,
+                'data' => $user
+            ], 200);
+    }
+
+    public function userNotasCreates($id)
+    {
+        $user = users::with("notasCreates")->where('id', $id)->first();
 
          return response()->json([
             'res' => true,
