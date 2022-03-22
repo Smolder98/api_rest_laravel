@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\GroupController;
+use App\Http\Controllers\API\NotaController;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\UserGroupController;
 use App\Models\UserGroup;
@@ -40,7 +41,7 @@ Route::apiResource('users', UserController::class);
 
 Route::get('usersGroupCreates/{id}', [UserController::class, 'userGroupsCreates']);
 
-Route::get('usersGroupCreates/{id}', [UserController::class, 'userGroupsCreates']);
+Route::get('usersNotasCreates/{id}', [UserController::class, 'userNotasCreates']);
 
 Route::get('usersGroup/{id}', [UserController::class, 'userGroups']);
 
@@ -73,3 +74,12 @@ Route::post('updateUserGroup', [UserGroupController::class, 'actualizarGrupoUsua
 Route::post('getStatusUserGroup', [UserGroupController::class, 'getStatusUserGroup']);
 
 Route::apiResource('groupUsers', UserGroupController::class);
+
+
+
+/**
+ *
+ * Notas
+ */
+
+ Route::apiResource('notas', NotaController::class);
