@@ -21,7 +21,8 @@ class Users extends Model{
             "birthDate",
             "carrera",
             "email",
-            "password"
+            "password",
+            "availability"
     ];
 
 

@@ -28,6 +28,7 @@ class CreateTableUserTable extends Migration
             $table->string("carrera");
             $table->string("email")->unique();
             $table->string("password");
+            $table->integer("availability");
             $table->timestamps();
         });
     }

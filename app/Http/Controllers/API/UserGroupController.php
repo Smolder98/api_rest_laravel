@@ -239,9 +239,28 @@ class UserGroupController extends Controller
                             ->join('user_groups', 'groups.id', '=', 'user_groups.group_id')
                             ->where([
                                 "user_groups.user_id" => $idUser,
-                                "user_groups.status" => "1"
+                                "user_groups.status" => "1",
+                                "groups.status" => "1"
                             ])
                             ->get();
+
+                 return response()->json([
+                                        'res' => true,
+                                        'data' => $user
+                                    ], 200);
+
+    }
+
+
+    public function userFriends($idUser)
+    {
+
+
+             $user = DB::select("SELECT DISTINCT u.id, u.name, u.lastname, u.email, u.image, u.status, u.idFirebase
+	FROM users u INNER JOIN user_groups ugg ON u.id = ugg.user_id
+	WHERE ugg.group_id IN (SELECT ug.group_id
+												FROM user_groups ug
+											WHERE ug.user_id = {$idUser}) AND u.id <> {$idUser}");
 
                  return response()->json([
                                         'res' => true,
